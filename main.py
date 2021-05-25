@@ -21,8 +21,6 @@ else:
 
 try:
 
-
-
    cursor.execute(""" CREATE TABLE Producto (
 	"Identificador"	INTEGER PRIMARY KEY NOT NULL,
 	"NombreProducto"	TEXT NOT NULL,
@@ -92,6 +90,9 @@ except dbapi.DatabaseError as e:
    except dbapi.DatabaseError as e:
        print("Error insertando los datos en Supermercados: " + str(e))
 
+
+
+
    try:
        cursor.execute("select * from Producto")
        # fetchone a seguinte tupla
@@ -99,19 +100,19 @@ except dbapi.DatabaseError as e:
        # fetcmany numero de tuplas pasado por parametro
        for fila in cursor.fetchall():
            # print (fila)
-           print("Identificador: " + fila[0])
+           print("Identificador: " + str(fila[0]))
            print("NombreProducto: " + fila[1])
-           print("CodigoProducto: " + fila[2])
+           print("CodigoProducto: " + str(fila[2]))
            print("Proveedor: " + fila[3])
-           print("Precio: " + fila[4])
-           print("Cantidad: " + fila[5])
+           print("Precio: " + str(fila[4]))
+           print("Cantidad: " + str(fila[5]))
            print("Descripcion: " + fila[6])
 
    except dbapi.DatabaseError as e:
        print("Erro facendo a consulta: " + str(e))
    else:
        print("Consulta executada")
-   NombreCliente= input("Introduce o nome")
+   NombreProducto= input("Introduce o nome")
    try:
        consulta = "select * from producto where NombreProducto= ?"
        print(consulta)
