@@ -8,9 +8,10 @@ class recudi():
         builder = Gtk.Builder()
         builder.add_from_file ("recudi.glade")
 
-        sinais = {"on_btnRecudi_clicked": self.on_btnRecudi_clicked,
-                  "on_txtRecudi_activate": self.on_btnRecudi_clicked,
-                  "on_winRecudi_delete_event": Gtk.main_quit}
+        sinais = {"on_EntrarBoton_clicked": self.on_EntrarBoton_clicked,
+                  "on_AccederUs_activate": self.on_EntrarBoton_clicked,
+                  "on_AccederCo_activate": self.on_EntrarBoton_clicked,
+                  "on_EntrarBoton_delete_event": Gtk.main_quit}
 
         builder.connect_signals(sinais)
 
@@ -19,14 +20,19 @@ class recudi():
 
         Datos = builder.get_object("Datos")
         Datos.show_all()
+        Datos.hide()
 
 
-        self.txtRecudi = builder.get_object("txtRecudi")
-        self.lblRecudi = builder.get_object("lblRecudi")
+        self.AccederUs = builder.get_object("AccederUs")
+        self.AccederUsuario = builder.get_object("AccederUsuario")
+        self.AccederCo = builder.get_object("AccederCo")
+        self.Accederontraseña = builder.get_object("AccederContraseña")
 
-    def on_btnRecudi_clicked(self, boton):
-        nome = self.txtRecudi.get_text()
-        print(nome)
+    def on_EntrarBoton_clicked(self, boton):
+        us = self.AccederUs.get_text()
+        co = self.AccederCo.get_text()
+        print(us, co)
+
 
 
 if __name__ == "__main__":

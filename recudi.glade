@@ -13,9 +13,10 @@
         <property name="can_focus">False</property>
         <property name="row_spacing">14</property>
         <child>
-          <object class="GtkEntry">
+          <object class="GtkEntry" id="AccederUs">
             <property name="visible">True</property>
             <property name="can_focus">True</property>
+            <signal name="activate" handler="on_AccederUs_activate" swapped="no"/>
           </object>
           <packing>
             <property name="left_attach">1</property>
@@ -23,9 +24,10 @@
           </packing>
         </child>
         <child>
-          <object class="GtkEntry">
+          <object class="GtkEntry" id="AccederCo">
             <property name="visible">True</property>
             <property name="can_focus">True</property>
+            <signal name="activate" handler="on_AccederCo_activate" swapped="no"/>
           </object>
           <packing>
             <property name="left_attach">1</property>
@@ -33,7 +35,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkLabel">
+          <object class="GtkLabel" id="AccederUsuario">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="label" translatable="yes">Usuario</property>
@@ -44,7 +46,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkLabel">
+          <object class="GtkLabel" id="AccederContraseña">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="label" translatable="yes">Contraseña</property>
@@ -55,11 +57,13 @@
           </packing>
         </child>
         <child>
-          <object class="GtkButton">
+          <object class="GtkButton" id="EntrarBoton">
             <property name="label" translatable="yes">Entrar</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="receives_default">True</property>
+            <signal name="clicked" handler="on_EntrarBoton_clicked" swapped="no"/>
+            <signal name="delete-event" handler="on_EntrarBoton_delete_event" swapped="no"/>
           </object>
           <packing>
             <property name="left_attach">0</property>
@@ -88,7 +92,7 @@
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <child>
-                  <object class="GtkLabel">
+                  <object class="GtkLabel" id="ProdIndentificador">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="label" translatable="yes">Identificador</property>
@@ -99,7 +103,7 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkLabel">
+                  <object class="GtkLabel" id="ProdNombre">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="label" translatable="yes">NombreProducto</property>
@@ -110,7 +114,7 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkLabel">
+                  <object class="GtkLabel" id="ProdCodigo">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="label" translatable="yes">CodigoProducto</property>
@@ -121,7 +125,7 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkLabel">
+                  <object class="GtkLabel" id="ProdDescripccion">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="label" translatable="yes">Descripcion</property>
@@ -132,7 +136,7 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkLabel">
+                  <object class="GtkLabel" id="ProdPrecio">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="label" translatable="yes">Precio</property>
@@ -143,7 +147,7 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkLabel">
+                  <object class="GtkLabel" id="ProdCantidad">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="label" translatable="yes">Cantidad</property>
@@ -154,7 +158,7 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkLabel">
+                  <object class="GtkLabel" id="ProdProveedor">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="label" translatable="yes">Proveedor</property>
@@ -165,9 +169,10 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkEntry">
+                  <object class="GtkEntry" id="ProdId">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
+                    <signal name="activate" handler="on_ProdId_activate" swapped="no"/>
                   </object>
                   <packing>
                     <property name="left_attach">1</property>
@@ -175,9 +180,10 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkEntry">
+                  <object class="GtkEntry" id="ProdNo">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
+                    <signal name="activate" handler="on_ProdNo_activate" swapped="no"/>
                   </object>
                   <packing>
                     <property name="left_attach">1</property>
@@ -185,9 +191,10 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkEntry">
+                  <object class="GtkEntry" id="ProdCo">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
+                    <signal name="activate" handler="on_ProdCo_activate" swapped="no"/>
                   </object>
                   <packing>
                     <property name="left_attach">1</property>
@@ -195,9 +202,10 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkEntry">
+                  <object class="GtkEntry" id="ProdDe">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
+                    <signal name="activate" handler="on_ProdDe_activate" swapped="no"/>
                   </object>
                   <packing>
                     <property name="left_attach">1</property>
@@ -206,9 +214,10 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkEntry">
+                  <object class="GtkEntry" id="ProdPr">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
+                    <signal name="activate" handler="on_ProdPr_activate" swapped="no"/>
                   </object>
                   <packing>
                     <property name="left_attach">3</property>
@@ -216,9 +225,10 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkEntry">
+                  <object class="GtkEntry" id="ProdCa">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
+                    <signal name="activate" handler="on_ProdCa_activate" swapped="no"/>
                   </object>
                   <packing>
                     <property name="left_attach">3</property>
@@ -226,9 +236,10 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkEntry">
+                  <object class="GtkEntry" id="ProdPro">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
+                    <signal name="activate" handler="on_ProdPro_activate" swapped="no"/>
                   </object>
                   <packing>
                     <property name="left_attach">3</property>
@@ -246,11 +257,12 @@
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <child>
-                  <object class="GtkButton">
+                  <object class="GtkButton" id="ProdAñadir">
                     <property name="label" translatable="yes">Añadir</property>
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="receives_default">True</property>
+                    <signal name="clicked" handler="on_ProdAñadir_clicked" swapped="no"/>
                   </object>
                   <packing>
                     <property name="left_attach">0</property>
@@ -258,11 +270,12 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkButton">
+                  <object class="GtkButton" id="ProdModificar">
                     <property name="label" translatable="yes">Modificar</property>
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="receives_default">True</property>
+                    <signal name="clicked" handler="on_ProdModificar_clicked" swapped="no"/>
                   </object>
                   <packing>
                     <property name="left_attach">1</property>
@@ -290,7 +303,7 @@
           </object>
         </child>
         <child type="tab">
-          <object class="GtkLabel">
+          <object class="GtkLabel" id="Producto">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="label" translatable="yes">Producto</property>
@@ -308,7 +321,7 @@
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <child>
-                  <object class="GtkLabel">
+                  <object class="GtkLabel" id="ProvIdentificador">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="label" translatable="yes">Identificador</property>
@@ -319,7 +332,7 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkLabel">
+                  <object class="GtkLabel" id="ProvNombre">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="label" translatable="yes">NombreProveedor</property>
@@ -330,7 +343,7 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkLabel">
+                  <object class="GtkLabel" id="ProvTelefono">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="label" translatable="yes">Telefono</property>
@@ -341,7 +354,7 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkLabel">
+                  <object class="GtkLabel" id="ProvCorreo">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="label" translatable="yes">CorreoElectronico</property>
@@ -352,7 +365,7 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkLabel">
+                  <object class="GtkLabel" id="ProvPais">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="label" translatable="yes">Pais</property>
@@ -363,7 +376,7 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkLabel">
+                  <object class="GtkLabel" id="ProvDireccion">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="label" translatable="yes">Direccion</property>
@@ -374,7 +387,7 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkLabel">
+                  <object class="GtkLabel" id="ProvCodigo">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="label" translatable="yes">CodigoPostal</property>
@@ -385,7 +398,7 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkLabel">
+                  <object class="GtkLabel" id="ProvNumero">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="label" translatable="yes">Numero</property>
@@ -396,7 +409,7 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkLabel">
+                  <object class="GtkLabel" id="ProvCif">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="label" translatable="yes">CIF</property>
@@ -407,7 +420,7 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkLabel">
+                  <object class="GtkLabel" id="ProvBanco">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="label" translatable="yes">DatosBancarios</property>
@@ -418,9 +431,10 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkEntry">
+                  <object class="GtkEntry" id="ProvId">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
+                    <signal name="activate" handler="on_ProvId_activate" swapped="no"/>
                   </object>
                   <packing>
                     <property name="left_attach">1</property>
@@ -428,9 +442,10 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkEntry">
+                  <object class="GtkEntry" id="ProvNo">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
+                    <signal name="activate" handler="on_ProvNo_activate" swapped="no"/>
                   </object>
                   <packing>
                     <property name="left_attach">1</property>
@@ -438,9 +453,10 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkEntry">
+                  <object class="GtkEntry" id="ProvTe">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
+                    <signal name="activate" handler="on_ProvTe_activate" swapped="no"/>
                   </object>
                   <packing>
                     <property name="left_attach">1</property>
@@ -448,9 +464,10 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkEntry">
+                  <object class="GtkEntry" id="ProvCo">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
+                    <signal name="activate" handler="on_ProvCo_activate" swapped="no"/>
                   </object>
                   <packing>
                     <property name="left_attach">1</property>
@@ -458,9 +475,10 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkEntry">
+                  <object class="GtkEntry" id="ProvPa">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
+                    <signal name="activate" handler="on_ProvPa_activate" swapped="no"/>
                   </object>
                   <packing>
                     <property name="left_attach">1</property>
@@ -468,9 +486,10 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkEntry">
+                  <object class="GtkEntry" id="ProvDi">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
+                    <signal name="activate" handler="on_ProvDi_activate" swapped="no"/>
                   </object>
                   <packing>
                     <property name="left_attach">3</property>
@@ -478,9 +497,10 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkEntry">
+                  <object class="GtkEntry" id="ProvNu">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
+                    <signal name="activate" handler="on_ProvNu_activate" swapped="no"/>
                   </object>
                   <packing>
                     <property name="left_attach">3</property>
@@ -488,9 +508,10 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkEntry">
+                  <object class="GtkEntry" id="ProvCod">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
+                    <signal name="activate" handler="on_ProvCod_activate" swapped="no"/>
                   </object>
                   <packing>
                     <property name="left_attach">3</property>
@@ -498,9 +519,10 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkEntry">
+                  <object class="GtkEntry" id="ProvCi">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
+                    <signal name="activate" handler="on_ProvCi_activate" swapped="no"/>
                   </object>
                   <packing>
                     <property name="left_attach">3</property>
@@ -508,9 +530,10 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkEntry">
+                  <object class="GtkEntry" id="ProvDa">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
+                    <signal name="activate" handler="on_ProvDa_activate" swapped="no"/>
                   </object>
                   <packing>
                     <property name="left_attach">3</property>
@@ -528,11 +551,12 @@
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <child>
-                  <object class="GtkButton">
+                  <object class="GtkButton" id="ProvAñadir">
                     <property name="label" translatable="yes">Añadir</property>
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="receives_default">True</property>
+                    <signal name="clicked" handler="on_ProvAñadir_clicked" swapped="no"/>
                   </object>
                   <packing>
                     <property name="left_attach">0</property>
@@ -540,11 +564,12 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkButton">
+                  <object class="GtkButton" id="ProvModificar">
                     <property name="label" translatable="yes">Modificar</property>
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="receives_default">True</property>
+                    <signal name="clicked" handler="on_ProvModificar_clicked" swapped="no"/>
                   </object>
                   <packing>
                     <property name="left_attach">1</property>
@@ -575,7 +600,7 @@
           </packing>
         </child>
         <child type="tab">
-          <object class="GtkLabel">
+          <object class="GtkLabel" id="Proveedor">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="label" translatable="yes">Proveedor</property>
@@ -594,7 +619,7 @@
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <child>
-                  <object class="GtkLabel">
+                  <object class="GtkLabel" id="SuperIdentificador">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="label" translatable="yes">Identificador</property>
@@ -605,7 +630,7 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkLabel">
+                  <object class="GtkLabel" id="SuperNombre">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="label" translatable="yes">NombreSupermercado</property>
@@ -616,7 +641,7 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkLabel">
+                  <object class="GtkLabel" id="SuperTelefono">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="label" translatable="yes">Telefono</property>
@@ -627,7 +652,7 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkLabel">
+                  <object class="GtkLabel" id="SuperPais">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="label" translatable="yes">Pais</property>
@@ -638,7 +663,7 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkLabel">
+                  <object class="GtkLabel" id="SuperCorreo">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="label" translatable="yes">Correo electronico</property>
@@ -649,7 +674,7 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkLabel">
+                  <object class="GtkLabel" id="SuperDireccion">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="label" translatable="yes">Direccion</property>
@@ -660,7 +685,7 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkLabel">
+                  <object class="GtkLabel" id="SuperCodigo">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="label" translatable="yes">CodigoPostal</property>
@@ -671,7 +696,7 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkLabel">
+                  <object class="GtkLabel" id="SuperCif">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="label" translatable="yes">CIF</property>
@@ -682,7 +707,7 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkLabel">
+                  <object class="GtkLabel" id="SuperNumero">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="label" translatable="yes">Numero</property>
@@ -693,9 +718,10 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkEntry">
+                  <object class="GtkEntry" id="SuperId">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
+                    <signal name="activate" handler="on_SuperId_activate" swapped="no"/>
                   </object>
                   <packing>
                     <property name="left_attach">1</property>
@@ -703,9 +729,10 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkEntry">
+                  <object class="GtkEntry" id="SuperNo">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
+                    <signal name="activate" handler="on_SuperNo_activate" swapped="no"/>
                   </object>
                   <packing>
                     <property name="left_attach">1</property>
@@ -713,9 +740,10 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkEntry">
+                  <object class="GtkEntry" id="SuperTe">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
+                    <signal name="activate" handler="on_SuperTe_activate" swapped="no"/>
                   </object>
                   <packing>
                     <property name="left_attach">1</property>
@@ -723,9 +751,10 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkEntry">
+                  <object class="GtkEntry" id="SuperPa">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
+                    <signal name="activate" handler="on_SuperPa_activate" swapped="no"/>
                   </object>
                   <packing>
                     <property name="left_attach">1</property>
@@ -733,9 +762,10 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkEntry">
+                  <object class="GtkEntry" id="SuperCo">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
+                    <signal name="activate" handler="on_SuperCo_activate" swapped="no"/>
                   </object>
                   <packing>
                     <property name="left_attach">1</property>
@@ -744,9 +774,10 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkEntry">
+                  <object class="GtkEntry" id="SuperDi">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
+                    <signal name="activate" handler="on_SuperDi_activate" swapped="no"/>
                   </object>
                   <packing>
                     <property name="left_attach">3</property>
@@ -754,9 +785,10 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkEntry">
+                  <object class="GtkEntry" id="SuperCod">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
+                    <signal name="activate" handler="on_SuperCod_activate" swapped="no"/>
                   </object>
                   <packing>
                     <property name="left_attach">3</property>
@@ -764,9 +796,10 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkEntry">
+                  <object class="GtkEntry" id="SuperCi">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
+                    <signal name="activate" handler="on_SuperCi_activate" swapped="no"/>
                   </object>
                   <packing>
                     <property name="left_attach">3</property>
@@ -774,9 +807,10 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkEntry">
+                  <object class="GtkEntry" id="SuperNu">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
+                    <signal name="activate" handler="on_SuperNu_activate" swapped="no"/>
                   </object>
                   <packing>
                     <property name="left_attach">3</property>
@@ -794,11 +828,12 @@
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <child>
-                  <object class="GtkButton">
+                  <object class="GtkButton" id="SuperAñadir">
                     <property name="label" translatable="yes">Añadir</property>
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="receives_default">True</property>
+                    <signal name="clicked" handler="on_SuperAñadir_clicked" swapped="no"/>
                   </object>
                   <packing>
                     <property name="left_attach">0</property>
@@ -806,11 +841,12 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkButton">
+                  <object class="GtkButton" id="SuperModificar">
                     <property name="label" translatable="yes">Modificar</property>
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="receives_default">True</property>
+                    <signal name="clicked" handler="on_SuperModificar_clicked" swapped="no"/>
                   </object>
                   <packing>
                     <property name="left_attach">1</property>
@@ -841,7 +877,7 @@
           </packing>
         </child>
         <child type="tab">
-          <object class="GtkLabel">
+          <object class="GtkLabel" id="Supermercados">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="label" translatable="yes">Supermercados</property>
