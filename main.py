@@ -90,9 +90,6 @@ except dbapi.DatabaseError as e:
    except dbapi.DatabaseError as e:
        print("Error insertando los datos en Supermercados: " + str(e))
 
-
-
-
    try:
        cursor.execute("select * from Producto")
        # fetchone a seguinte tupla

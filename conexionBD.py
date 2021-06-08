@@ -13,8 +13,8 @@ class ConexionBD:
 
         """
         self.rutaBd = rutaBd
-        self.conexion = None
-        self.cursor = None
+        self.conexion = dbapi.connect("recu.dat")
+        self.cursor = self.conexion.cursor()
 
 
     def conectaBD (self):
