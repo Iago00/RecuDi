@@ -88,10 +88,10 @@ class recudi():
         self.Acceder.hide()
 
     def on_ProdConsultar_clicked(self, boton):
-        baseDatos = ConexionBD("recu.dat")
-        identificador = self.ProdId.get_text()
-        listaClientes = baseDatos.consultaConParametros("SELECT * FROM producto WHERE Identificador=?", identificador)
-        for consulta in listaClientes:
+        bD = ConexionBD("recu.dat")
+        id = self.ProdId.get_text()
+        listaProducto = bD.consultaConParametros("SELECT * FROM producto WHERE Identificador=?", id)
+        for consulta in listaProducto:
             self.ProdNo.set_text(consulta[1])
             self.ProdCo.set_text(str(consulta[2]))
             self.ProdPr.set_text(str(consulta[3]))
@@ -101,37 +101,33 @@ class recudi():
         self.ProdDe.set_text("consulta realizada")
 
     def on_ProdAñadir_clicked(self, boton):
-        baseDatos = ConexionBD("recu.dat")
-        prodid = self.ProdId.get_text()
-        listaClientes = baseDatos.consultaConParametros("SELECT * FROM producto WHERE Identificador=?", prodid)
+        bD = ConexionBD("recu.dat")
+        identificador = self.ProdId.get_text()
+        listaProducto = bD.consultaConParametros("SELECT * FROM producto WHERE Identificador=?", identificador)
 
-        def is_emply(compro):
-            if len(compro) == 0:
+        def is_emply(x):
+            if len(x) == 0:
                 return True
             return False
 
-        consulta = list()
+        listaP = list()
 
-        if is_emply(listaClientes) == True:
-            consulta.append(self.ProdNo.get_text())
-            consulta.append(self.ProdCo.get_text())
-            consulta.append(self.ProdPr.get_text())
-            consulta.append(self.ProdCa.get_text())
-            consulta.append(self.ProdPro.get_text())
+        if is_emply(listaProducto) == True:
+            listaP.append(self.ProdNo.get_text())
+            listaP.append(self.ProdCo.get_text())
+            listaP.append(self.ProdPr.get_text())
+            listaP.append(self.ProdCa.get_text())
+            listaP.append(self.ProdPro.get_text())
 
-            baseDatos.ingresarVentas(consulta)
+            bD.añadirProducto(listaP)
 
 
-
-    def on_ProdModificar_clicked(self, boton):
-
-    def on_ProdEliminar_clicked(self, boton):
 
     def on_ProvConsultar_clicked(self, boton):
-        baseDatos = ConexionBD("recu.dat")
-        identificador = self.ProdId.get_text()
-        listaClientes = baseDatos.consultaConParametros("SELECT * FROM proveedor WHERE Identificador=?", identificador)
-        for consulta in listaClientes:
+        bD = ConexionBD("recu.dat")
+        identificador = self.ProvId.get_text()
+        listaProveedor = bD.consultaConParametros("SELECT * FROM proveedor WHERE Identificador=?", identificador)
+        for consulta in listaProveedor:
             self.ProvNo.set_text(consulta[1])
             self.ProvTe.set_text(str(consulta[2]))
             self.ProvCo.set_text(consulta[3])
@@ -143,16 +139,37 @@ class recudi():
             self.ProvDa.set_text(str(consulta[9]))
 
     def on_ProvAñadir_clicked(self, boton):
+        bD = ConexionBD("recu.dat")
+        identificador = self.ProvId.get_text()
+        listaProveedor = bD.consultaConParametros("SELECT * FROM poveedor WHERE Identificador=?", identificador)
 
-    def on_ProvModificar_clicked(self, boton):
+        def is_emply(compro):
+            if len(compro) == 0:
+                return True
+            return False
 
-    def on_ProvEliminar_clicked(self, boton):
+        listaPr = list()
+
+        if is_emply(listaProveedor) == True:
+            listaPr.append(self.ProvNo.get_text())
+            listaPr.append(self.ProvTe.get_text())
+            listaPr.append(self.ProvCo.get_text())
+            listaPr.append(self.ProvPa.get_text())
+            listaPr.append(self.ProvDi.get_text())
+            listaPr.append(self.ProvNu.get_text())
+            listaPr.append(self.ProvCod.get_text())
+            listaPr.append(self.ProvCi.get_text())
+            listaPr.append(self.ProvDa.get_text())
+
+            bD.añadirProveedor(listaPr)
+
+
 
     def on_SuperConsultar_clicked(self, boton):
-            baseDatos = ConexionBD("recu.dat")
-            identificador = self.ProdId.get_text()
-            listaClientes = baseDatos.consultaConParametros("SELECT * FROM supermercados WHERE Identificador=?",identificador)
-            for consulta in listaClientes:
+            bD = ConexionBD("recu.dat")
+            identificador = self.SuperId.get_text()
+            listaSupermercados = bD.consultaConParametros("SELECT * FROM supermercados WHERE Identificador=?",identificador)
+            for consulta in listaSupermercados:
                 self.SuperNo.set_text(consulta[1])
                 self.SuperTe.set_text(str(consulta[2]))
                 self.SuperPa.set_text(consulta[3])
@@ -161,6 +178,31 @@ class recudi():
                 self.SuperCod.set_text(str(consulta[6]))
                 self.SuperCi.set_text(str(consulta[7]))
                 self.SuperNu.set_text(str(consulta[8]))
+
+    def on_SuperAñadir_clicked(self, boton):
+        bD = ConexionBD("recu.dat")
+        identificador = self.SuperId.get_text()
+        listaSupermercados = bD.consultaConParametros("SELECT * FROM supermercados WHERE Identificador=?", identificador)
+
+        def is_emply(compro):
+            if len(compro) == 0:
+                return True
+            return False
+
+        listaS = list()
+
+        if is_emply(listaSupermercados) == True:
+            listaS.append(self.SuperNo.get_text())
+            listaS.append(self.SuperTe.get_text())
+            listaS.append(self.SuperPa.get_text())
+            listaS.append(self.SuperCo.get_text())
+            listaS.append(self.SuperDi.get_text())
+            listaS.append(self.SuperCod.get_text())
+            listaS.append(self.SuperCi.get_text())
+            listaS.append(self.SuperNu.get_text())
+
+
+            bD.añadirSupermercados(listaS)
 
 
 

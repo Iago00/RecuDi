@@ -124,3 +124,95 @@ class ConexionBD:
             print("Consulta executada")
             return listaConsulta
 
+
+    def añadirProducto(self,y):
+
+        try:
+            if self.conexion is None:
+                print("Creando consulta: É necesario realizar a conexión a base de datos previamente")
+            else:
+                if self.cursor is None:
+                    print("Creando consulta: É necesario realizar a creación do cursor previamente")
+                else:
+
+                    lista = y
+
+                    self.cursor.execute("INSERT INTO producto VALUES( '" + lista[0] +
+                                        "' , '" + str(lista[1]) +
+                                        "' , '" + str(lista[2]) +
+                                        "' , " + str(lista[3]) +
+                                        " , " + str(lista[4]) +
+                                        " , " + lista[5] + ")")
+
+        except dbapi.DatabaseError as e:
+            print("Erro facendo insert producto: " + str(e))
+            return None
+        else:
+            print("Operacion executada")
+
+            self.conexion.commit()
+
+
+
+    def añadirProveedor(self, y):
+
+        try:
+            if self.conexion is None:
+                print("Creando consulta: É necesario realizar a conexión a base de datos previamente")
+            else:
+                if self.cursor is None:
+                    print("Creando consulta: É necesario realizar a creación do cursor previamente")
+                else:
+
+                    lista = y
+
+                    self.cursor.execute("INSERT INTO proveedor VALUES( '" + lista[0] +
+                                        "' , '" + lista[1] +
+                                        "' , '" + str(lista[2]) +
+                                        "' , " + lista[3] +
+                                        " , " + lista[4] +
+                                        " , " + lista[5] +
+                                        "' , '" + str(lista[6]) +
+                                        "' , '" + str(lista[7]) +
+                                        "' , '" + str(lista[8]) +
+                                        "' , '" + str(lista[9]) + ")")
+
+        except dbapi.DatabaseError as e:
+            print("Erro facendo insert proveedor: " + str(e))
+            return None
+        else:
+            print("Operacion executada")
+
+            self.conexion.commit()
+
+    def añadirSupermercados(self, y):
+
+        try:
+            if self.conexion is None:
+                print("Creando consulta: É necesario realizar a conexión a base de datos previamente")
+            else:
+                if self.cursor is None:
+                    print("Creando consulta: É necesario realizar a creación do cursor previamente")
+                else:
+
+                    lista = y
+
+                    self.cursor.execute("INSERT INTO supermercados VALUES( '" + lista[0] +
+                                        "' , '" + lista[1] +
+                                        "' , '" + str(lista[2]) +
+                                        "' , " + lista[3] +
+                                        " , " + lista[4] +
+                                        "' , '" + lista[5] +
+                                        "' , '" + str(lista[6]) +
+                                        "' , '" + str(lista[7]) +
+                                        "' , '" + str(lista[8]) + ")")
+
+        except dbapi.DatabaseError as e:
+            print("Erro facendo insert supermercados: " + str(e))
+            return None
+        else:
+            print("Operacion executada")
+
+            self.conexion.commit()
+
+
