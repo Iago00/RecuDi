@@ -62,7 +62,7 @@ try:
    cursor.execute("""insert into Proveedor
                     values(2, 'Hacendado',624825428,'rbm@gmail','Barcelona','Avenida Rucula',25,19985,5488612,91547952)""")
    cursor.execute("""insert into Proveedor
-                    values(3, 'La Lata De Braulio',689246578,'jaf@gmail','Portugal','Calle Central',10,38748,54892165,56547892014)""")
+                    values(3,'La Lata De Braulio',689246578,'jaf@gmail','Portugal','Calle Central',10,38748,54892165,56547892014)""")
    bbdd.commit()
 except dbapi.DatabaseError as e:
    print("Erro insertando os datos en proveedor: " + str(e))
@@ -80,12 +80,12 @@ except dbapi.DatabaseError as e:
    	"CIF"	INTEGER NOT NULL
          )
          """)
-       cursor.execute("""insert into Proveedor
-                       values(1, 'Froiz',654425458,'hytt@gom','Galicia','Calle Roberto Carlos',14,55991,7689521)""")
-       cursor.execute("""insert into Proveedor
-                       values(2, 'Eroski',624825428,'hffw@gam','Galicia','Avenida da Fonte',40,90485,7688612)""")
-       cursor.execute("""insert into Proveedor
-                       values(3, 'Gadis',589246578,'kijhp@la','Galicia','Calle Bilbao',88,76548,76892165)""")
+       cursor.execute("""insert into Supermercados
+                       values (1,'Froiz',654425458,'hytt@gom','Galicia','Calle Roberto Carlos',14,55991,7689521)""")
+       cursor.execute("""insert into Supermercados
+                       values(2,'Eroski',624825428,'hffw@gam','Galicia','Avenida da Fonte',40,90485,7688612)""")
+       cursor.execute("""insert into Supermercados
+                       values(3,'Gadis',589246578,'kijhp@la','Galicia','Calle Bilbao',88,76548,76892165)""")
        bbdd.commit()
    except dbapi.DatabaseError as e:
        print("Error insertando los datos en Supermercados: " + str(e))
@@ -111,7 +111,7 @@ except dbapi.DatabaseError as e:
        print("Consulta executada")
    NombreProducto= input("Introduce o nome")
    try:
-       consulta = "select * from producto where NombreProducto= ?"
+       consulta = "select * from Producto where NombreProducto= ?"
        print(consulta)
        cursor.execute(consulta, (NombreProducto,))
        for rexistro in cursor.fetchall():

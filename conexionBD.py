@@ -118,14 +118,14 @@ class ConexionBD:
                         listaConsulta.append(fila)
 
         except dbapi.DatabaseError as e:
-            print("Erro facendo a consulta: " + str(e))
+            print("Erro facendo a consulta AQUI: " + str(e))
             return None
         else:
             print("Consulta executada")
             return listaConsulta
 
 
-    def añadirProducto(self,y):
+    def añadirProducto(self, y):
 
         try:
             if self.conexion is None:
@@ -137,12 +137,13 @@ class ConexionBD:
 
                     lista = y
 
-                    self.cursor.execute("INSERT INTO producto VALUES( '" + lista[0] +
-                                        "' , '" + str(lista[1]) +
+                    self.cursor.execute("INSERT INTO Producto VALUES( '" + str(lista[0]) +
+                                        "' , '" + lista[1] +
                                         "' , '" + str(lista[2]) +
-                                        "' , " + str(lista[3]) +
+                                        "' , " + lista[3] +
                                         " , " + str(lista[4]) +
-                                        " , " + lista[5] + ")")
+                                        " , " + str(lista[5]) +
+                                        " , '" + lista[6] +"'")
 
         except dbapi.DatabaseError as e:
             print("Erro facendo insert producto: " + str(e))
@@ -152,7 +153,32 @@ class ConexionBD:
 
             self.conexion.commit()
 
+    def modificarProducto(self, y):
+        try:
+            if self.conexion is None:
+                print("Creando consulta: É necesario realizar a conexión a base de datos previamente")
+            else:
+                if self.cursor is None:
+                    print("Creando consulta: É necesario realizar a creación do cursor previamente")
+                else:
 
+                    lista = y
+
+                    identificador = lista[0]
+
+                    self.cursor.execute(
+                        "UPDATE Producto SET NombreProducto= '" + lista[1] + "',CodigoProducto=" + str(lista[2]) + ",Proveedor='" + lista[3] + "',Precio=" + str(lista[4]) + ",Cantidad=" + str(lista[5]) + ",Descripcion='" + lista[6] + "' WHERE Identificador=  '"+identificador + "'")
+
+
+
+
+        except dbapi.DatabaseError as e:
+            print("Erro facendo insert producto: " + str(e))
+            return None
+        else:
+            print("Operacion executada")
+
+            self.conexion.commit()
 
     def añadirProveedor(self, y):
 
@@ -166,7 +192,7 @@ class ConexionBD:
 
                     lista = y
 
-                    self.cursor.execute("INSERT INTO proveedor VALUES( '" + lista[0] +
+                    self.cursor.execute("INSERT INTO Proveedor VALUES( '" + lista[0] +
                                         "' , '" + lista[1] +
                                         "' , '" + str(lista[2]) +
                                         "' , " + lista[3] +
@@ -178,7 +204,35 @@ class ConexionBD:
                                         "' , '" + str(lista[9]) + ")")
 
         except dbapi.DatabaseError as e:
-            print("Erro facendo insert proveedor: " + str(e))
+            print("Erro facendo insert Proveedor: " + str(e))
+            return None
+        else:
+            print("Operacion executada")
+
+            self.conexion.commit()
+
+    def modificarProveedor(self, y):
+        try:
+            if self.conexion is None:
+                print("Creando consulta: É necesario realizar a conexión a base de datos previamente")
+            else:
+                if self.cursor is None:
+                    print("Creando consulta: É necesario realizar a creación do cursor previamente")
+                else:
+
+                    lista = y
+
+                    identificador = lista[0]
+
+                    self.cursor.execute(
+                        "UPDATE Proveedor SET NombreProveedor= '" + lista[1] + "',Telefono='" + str(lista[2]) + "',CorreoElectronico=" +
+                            lista[3] + ",Pais=" + lista[4] + ",Direccion=" + lista[5] + "',Numero='" + str(lista[6]) + "',CodigoPostal='" + str(lista[7]) + "',CIF='" + str(lista[8]) + "',DatosBancarios='" + str(lista[9]) + " WHERE Identificador= '" + identificador + "'")
+
+
+
+
+        except dbapi.DatabaseError as e:
+            print("Erro facendo insert Proveedor: " + str(e))
             return None
         else:
             print("Operacion executada")
@@ -197,7 +251,7 @@ class ConexionBD:
 
                     lista = y
 
-                    self.cursor.execute("INSERT INTO supermercados VALUES( '" + lista[0] +
+                    self.cursor.execute("INSERT INTO Supermercados VALUES( '" + lista[0] +
                                         "' , '" + lista[1] +
                                         "' , '" + str(lista[2]) +
                                         "' , " + lista[3] +
@@ -214,5 +268,35 @@ class ConexionBD:
             print("Operacion executada")
 
             self.conexion.commit()
+
+
+    def modificarSupermercados(self, y):
+        try:
+            if self.conexion is None:
+                print("Creando consulta: É necesario realizar a conexión a base de datos previamente")
+            else:
+                if self.cursor is None:
+                    print("Creando consulta: É necesario realizar a creación do cursor previamente")
+                else:
+
+                    lista = y
+
+                    identificador = lista[0]
+
+                    self.cursor.execute(
+                        "UPDATE Supermercados SET NombreSupermercado= '" + lista[1] + "',Telefono='" + str(lista[2]) + "',CorreoElectronico=" +
+                            lista[3] + ",Pais=" + lista[4] + ",Direccion=" + lista[5] + "',Numero='" + str(lista[6]) + "',CodigoPostal='" + str(lista[7]) + "',CIF='" + str(lista[8]) + "',DatosBancarios='" + str(lista[9]) + " WHERE Identificador= '" + identificador + "'")
+
+
+
+
+        except dbapi.DatabaseError as e:
+            print("Erro facendo insert Supermercados: " + str(e))
+            return None
+        else:
+            print("Operacion executada")
+
+            self.conexion.commit()
+
 
 
