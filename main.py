@@ -54,21 +54,21 @@ try:
 	"Numero"	INTEGER NOT NULL,
 	"CodigoPostal"	INTEGER NOT NULL,
 	"CIF"	INTEGER NOT NULL,
-	"DatosBancarios"	INTEGER NOT NULL
+	"DatosBancarios"   INTEGER NOT NULL
       )
       """)
    cursor.execute("""insert into Proveedor
-                    values(1, 'Auchan',654425458,'ftj@gmail','Pontevedra','Calle Juan Carlos',69,56541,5489521,34488781)""")
+                    values(1, 'Auchan',65,'j@gm','Esp','Calle Carlos',69,51,51,31)""")
    cursor.execute("""insert into Proveedor
-                    values(2, 'Hacendado',624825428,'rbm@gmail','Barcelona','Avenida Rucula',25,19985,5488612,91547952)""")
+                    values(2, 'Hac',62,'r@g','Esp','Avenida Rucula',25,19,52,92)""")
    cursor.execute("""insert into Proveedor
-                    values(3,'La Lata De Braulio',689246578,'jaf@gmail','Portugal','Calle Central',10,38748,54892165,56547892014)""")
+                    values(3,'Braulio',68,'j@g','Esp','Calle Central',10,38,55,55)""")
    bbdd.commit()
 except dbapi.DatabaseError as e:
    print("Erro insertando os datos en proveedor: " + str(e))
 
-   try:
-       cursor.execute(""" CREATE TABLE Supermercados (
+try:
+    cursor.execute(""" CREATE TABLE Supermercados (
    	"Identificador"	INTEGER PRIMARY KEY NOT NULL,
    	"NombreSupermercado"	TEXT NOT NULL,
    	"Telefono"	INTEGER NOT NULL,
@@ -78,49 +78,49 @@ except dbapi.DatabaseError as e:
    	"Numero"	INTEGER NOT NULL,
    	"CodigoPostal"	INTEGER NOT NULL,
    	"CIF"	INTEGER NOT NULL
-         )
-         """)
-       cursor.execute("""insert into Supermercados
-                       values (1,'Froiz',654425458,'hytt@gom','Galicia','Calle Roberto Carlos',14,55991,7689521)""")
-       cursor.execute("""insert into Supermercados
-                       values(2,'Eroski',624825428,'hffw@gam','Galicia','Avenida da Fonte',40,90485,7688612)""")
-       cursor.execute("""insert into Supermercados
-                       values(3,'Gadis',589246578,'kijhp@la','Galicia','Calle Bilbao',88,76548,76892165)""")
-       bbdd.commit()
-   except dbapi.DatabaseError as e:
-       print("Error insertando los datos en Supermercados: " + str(e))
+        )
+        """)
+    cursor.execute("""insert into Supermercados
+                       values (1,'Froiz',65,'h@gom','Esp','Calle Roberto',14,55,78)""")
+    cursor.execute("""insert into Supermercados
+                       values(2,'Eroski',62,'h@gam','Esp','Avenida Fonte',40,90,78)""")
+    cursor.execute("""insert into Supermercados
+                       values(3,'Gadis',58,'k@la','Esp','Calle Bilbao',88,76,76)""")
+    bbdd.commit()
+except dbapi.DatabaseError as e:
+    print("Error insertando los datos en Supermercados: " + str(e))
 
-   try:
-       cursor.execute("select * from Producto")
-       # fetchone a seguinte tupla
-       # fetchall devolta un obxecto iterable con todalas tuplas
-       # fetcmany numero de tuplas pasado por parametro
-       for fila in cursor.fetchall():
-           # print (fila)
-           print("Identificador: " + str(fila[0]))
-           print("NombreProducto: " + fila[1])
-           print("CodigoProducto: " + str(fila[2]))
-           print("Proveedor: " + fila[3])
-           print("Precio: " + str(fila[4]))
-           print("Cantidad: " + str(fila[5]))
-           print("Descripcion: " + fila[6])
+    try:
+        cursor.execute("select * from Producto")
+        # fetchone a seguinte tupla
+        # fetchall devolta un obxecto iterable con todalas tuplas
+        # fetcmany numero de tuplas pasado por parametro
+        for fila in cursor.fetchall():
+            # print (fila)
+            print("Identificador: " + str(fila[0]))
+            print("NombreProducto: " + fila[1])
+            print("CodigoProducto: " + str(fila[2]))
+            print("Proveedor: " + fila[3])
+            print("Precio: " + str(fila[4]))
+            print("Cantidad: " + str(fila[5]))
+            print("Descripcion: " + fila[6])
 
-   except dbapi.DatabaseError as e:
-       print("Erro facendo a consulta: " + str(e))
-   else:
-       print("Consulta executada")
-   NombreProducto= input("Introduce o nome")
-   try:
-       consulta = "select * from Producto where NombreProducto= ?"
-       print(consulta)
-       cursor.execute(consulta, (NombreProducto,))
-       for rexistro in cursor.fetchall():
-           print(rexistro)
-   except dbapi.DatabaseError as e:
-       print("Error haciendo la consulta: " + str(e))
-   else:
-       print("Consulta ejecutada")
-   bbdd.commit()
+    except dbapi.DatabaseError as e:
+        print("Erro facendo a consulta: " + str(e))
+    else:
+        print("Consulta executada")
+        NombreProducto= input("Introduce o nome")
+    try:
+        consulta = "select * from Producto where NombreProducto= ?"
+        print(consulta)
+        cursor.execute(consulta, (NombreProducto,))
+        for rexistro in cursor.fetchall():
+            print(rexistro)
+    except dbapi.DatabaseError as e:
+        print("Error haciendo la consulta: " + str(e))
+    else:
+        print("Consulta ejecutada")
+        bbdd.commit()
 
 else:
     print ("Base de datos creada")

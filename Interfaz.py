@@ -41,6 +41,7 @@ class recudi():
         self.ProdCa = builder.get_object("ProdCa")
         self.ProdPro = builder.get_object("ProdPro")
 
+
         #Proveedor
 
         self.ProvId = builder.get_object("ProvId")
@@ -53,6 +54,7 @@ class recudi():
         self.ProvCod = builder.get_object("ProvCod")
         self.ProvCi = builder.get_object("ProvCi")
         self.ProvDa = builder.get_object("ProvDa")
+
 
         #Supermercados
 
@@ -109,8 +111,6 @@ class recudi():
             if len(compo) == 0:
                 return True
             return False
-
-
 
         listaP = list()
 
@@ -204,9 +204,6 @@ class recudi():
         else:
 
             print("Producto repetido")
-
-
-
 
 
 
@@ -313,6 +310,10 @@ class recudi():
 
     def on_SuperEliminar_clicked(self, boton):
      print("")
+
+
+
+
 
 if __name__ == "__main__":
     recudi()

@@ -139,8 +139,8 @@ class ConexionBD:
 
                     self.cursor.execute("INSERT INTO Producto VALUES( '" + str(lista[0]) +
                                         "' , '" + lista[1] +
-                                        "' , '" + str(lista[2]) +
-                                        "' , " + lista[3] +
+                                        "' , " + str(lista[2]) +
+                                        " , '" + lista[3] +
                                         " , " + str(lista[4]) +
                                         " , " + str(lista[5]) +
                                         " , '" + lista[6] +"'")
@@ -167,7 +167,13 @@ class ConexionBD:
                     identificador = lista[0]
 
                     self.cursor.execute(
-                        "UPDATE Producto SET NombreProducto= '" + lista[1] + "',CodigoProducto=" + str(lista[2]) + ",Proveedor='" + lista[3] + "',Precio=" + str(lista[4]) + ",Cantidad=" + str(lista[5]) + ",Descripcion='" + lista[6] + "' WHERE Identificador=  '"+identificador + "'")
+                        "UPDATE Producto SET NombreProducto= '" + lista[1] +
+                        "',CodigoProducto=" + str(lista[2]) +
+                        ",Proveedor='" + lista[3] +
+                        "',Precio=" + str(lista[4]) +
+                        ",Cantidad=" + str(lista[5]) +
+                        ",Descripcion='" + lista[6] +
+                        "' WHERE Identificador=  '"+identificador + "'")
 
 
 
@@ -194,14 +200,14 @@ class ConexionBD:
 
                     self.cursor.execute("INSERT INTO Proveedor VALUES( '" + lista[0] +
                                         "' , '" + lista[1] +
-                                        "' , '" + str(lista[2]) +
-                                        "' , " + lista[3] +
-                                        " , " + lista[4] +
-                                        " , " + lista[5] +
-                                        "' , '" + str(lista[6]) +
-                                        "' , '" + str(lista[7]) +
-                                        "' , '" + str(lista[8]) +
-                                        "' , '" + str(lista[9]) + ")")
+                                        "' , " + str(lista[2]) +
+                                        " , '" + lista[3] +
+                                        "' , '" + lista[4] +
+                                        "' , '" + lista[5] +
+                                        "' , " + str(lista[6]) +
+                                        " , " + str(lista[7]) +
+                                        " , " + str(lista[8]) +
+                                        " , " + str(lista[9]) + ")")
 
         except dbapi.DatabaseError as e:
             print("Erro facendo insert Proveedor: " + str(e))
@@ -225,8 +231,16 @@ class ConexionBD:
                     identificador = lista[0]
 
                     self.cursor.execute(
-                        "UPDATE Proveedor SET NombreProveedor= '" + lista[1] + "',Telefono='" + str(lista[2]) + "',CorreoElectronico=" +
-                            lista[3] + ",Pais=" + lista[4] + ",Direccion=" + lista[5] + "',Numero='" + str(lista[6]) + "',CodigoPostal='" + str(lista[7]) + "',CIF='" + str(lista[8]) + "',DatosBancarios='" + str(lista[9]) + " WHERE Identificador= '" + identificador + "'")
+                        "UPDATE Proveedor SET NombreProveedor= '" + lista[1] +
+                        "',Telefono=" + str(lista[2]) +
+                        ",CorreoElectronico='" + lista[3] +
+                        "',Pais='" + lista[4] +
+                        "',Direccion='" + lista[5] +
+                        "',Numero=" + str(lista[6]) +
+                        ",CodigoPostal=" + str(lista[7]) +
+                        ",CIF=" + str(lista[8]) +
+                        ",DatosBancarios=" + str(lista[9]) +
+                        " WHERE Identificador= '" + identificador + "'")
 
 
 
@@ -253,13 +267,13 @@ class ConexionBD:
 
                     self.cursor.execute("INSERT INTO Supermercados VALUES( '" + lista[0] +
                                         "' , '" + lista[1] +
-                                        "' , '" + str(lista[2]) +
-                                        "' , " + lista[3] +
-                                        " , " + lista[4] +
-                                        "' , '" + lista[5] +
-                                        "' , '" + str(lista[6]) +
-                                        "' , '" + str(lista[7]) +
-                                        "' , '" + str(lista[8]) + ")")
+                                        "' , " + str(lista[2]) +
+                                        " , '" + lista[3] +
+                                        " ' , '" + lista[4] +
+                                        " ' , '" + lista[5] +
+                                        " ', " + str(lista[6]) +
+                                        " , " + str(lista[7]) +
+                                        " , " + str(lista[8]) + ")")
 
         except dbapi.DatabaseError as e:
             print("Erro facendo insert supermercados: " + str(e))
@@ -284,8 +298,15 @@ class ConexionBD:
                     identificador = lista[0]
 
                     self.cursor.execute(
-                        "UPDATE Supermercados SET NombreSupermercado= '" + lista[1] + "',Telefono='" + str(lista[2]) + "',CorreoElectronico=" +
-                            lista[3] + ",Pais=" + lista[4] + ",Direccion=" + lista[5] + "',Numero='" + str(lista[6]) + "',CodigoPostal='" + str(lista[7]) + "',CIF='" + str(lista[8]) + "',DatosBancarios='" + str(lista[9]) + " WHERE Identificador= '" + identificador + "'")
+                        "UPDATE Supermercados SET NombreSupermercado= '" + lista[1] +
+                        "',Telefono=" + str(lista[2]) +
+                        ",CorreoElectronico='" +lista[3] +
+                        "',Pais='" + lista[4] +
+                        "',Direccion='" + lista[5] +
+                        "',Numero=" + str(lista[6]) +
+                        ",CodigoPostal=" + str(lista[7]) +
+                        ",CIF=" + str(lista[8]) +
+                        " WHERE Identificador= " + identificador + "")
 
 
 
