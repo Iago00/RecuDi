@@ -40,7 +40,18 @@ class recudi():
         self.ProdPr = builder.get_object("ProdPr")
         self.ProdCa = builder.get_object("ProdCa")
         self.ProdPro = builder.get_object("ProdPro")
+        self.ProductoTree = builder.get_object("ProductoTree")
 
+        #self.selection = self.ProductoTree.get_selection()
+
+        modelo_tabla = Gtk.ListStore(int, str, int, str, int, int, str)
+
+        bD = ConexionBD("recu.dat")
+        lispro = bD.consultaSenParametros("SELECT * FROM Producto")
+
+        for ax in lispro:
+
+            modelo_tabla.append(ax)
 
         #Proveedor
 
@@ -54,6 +65,15 @@ class recudi():
         self.ProvCod = builder.get_object("ProvCod")
         self.ProvCi = builder.get_object("ProvCi")
         self.ProvDa = builder.get_object("ProvDa")
+        self.ProveedorTree = builder.get_object("ProveedorTree")
+        #self.selection = self.ProveedorTree.get_selection()
+        modelo_tabla2 = Gtk.ListStore(int, str, int, str, str, str, int, int, int, int)
+
+        bD = ConexionBD("recu.dat")
+        lisprov = bD.consultaSenParametros("SELECT * FROM Proveedor")
+
+        for ax in lisprov:
+            modelo_tabla2.append(ax)
 
 
         #Supermercados
@@ -67,9 +87,77 @@ class recudi():
         self.SuperCod = builder.get_object("SuperCod")
         self.SuperCi = builder.get_object("SuperCi")
         self.SuperNu = builder.get_object("SuperNu")
+        self.SupermercadosTree = builder.get_object("SupermercadosTree")
+        #self.selection = self.SupermercadosTree.get_selection()
+        modelo_tabla3 = Gtk.ListStore(int, str, int, str, str, str, int, int, int)
+
+        bD = ConexionBD("recu.dat")
+        lissuper = bD.consultaSenParametros("SELECT * FROM Supermercados")
+
+        for ax in lissuper:
+            modelo_tabla3.append(ax)
+
+
+        # Producto
+        treeProd = Gtk.TreeView(modelo_tabla)
+        seleccion = treeProd.get_selection()
+        seleccion.connect("changed", self.treevcli_selec_chan)
 
 
 
+        for x, columnas in enumerate(["Identificador", "NombreProducto", "CodigoProducto", "Proveedor", "Precio", "Cantidad", "Descripcion"]):
+            celda = Gtk.CellRendererText()
+            columnacli = Gtk.TreeViewColumn(columnas, celda, text=x)
+            celda.props.editable = True
+
+
+            celda.connect("edited", self.celda_edit, x, modelo_tabla)
+
+
+            self.ProductoTree.append_column(columnacli)
+
+        self.ProductoTree.set_model(modelo_tabla)
+        self.ProductoTree.set_reorderable(True)
+
+        #Proveedor
+        treeProv = Gtk.TreeView(modelo_tabla2)
+        seleccion = treeProv.get_selection()
+        seleccion.connect("changed", self.treevprov_selec_chan)
+
+
+        for x, columnas in enumerate(["Identificador", "NombreProveedor", "Telefono", "CorreoElectronico", "Pais", "Direccion", "Numero", "CodigoPostal", "CIF", "DatosBancarios"]):
+            celda = Gtk.CellRendererText()
+            columnacli = Gtk.TreeViewColumn(columnas, celda, text=x)
+            celda.props.editable = True
+
+
+            celda.connect("edited", self.celda_edit, x, modelo_tabla2)
+
+
+            self.ProveedorTree.append_column(columnacli)
+
+        self.ProveedorTree.set_model(modelo_tabla2)
+        self.ProveedorTree.set_reorderable(True)
+
+        #Supermercados
+        treeSuper = Gtk.TreeView(modelo_tabla3)
+        seleccion = treeSuper.get_selection()
+        seleccion.connect("changed", self.treevsuper_selec_chan)
+
+        for x, columnas in enumerate(["Identificador", "NombreSupermercado", "Telefono", "CorreoElectronico", "Pais", "Direccion", "Numero", "CodigoPostal", "CIF"]):
+            celda = Gtk.CellRendererText()
+            columnacli = Gtk.TreeViewColumn(columnas, celda, text=x)
+            celda.props.editable = True
+
+            celda.connect("edited", self.celda_edit, x, modelo_tabla3)
+
+            self.SupermercadosTree.append_column(columnacli)
+
+        self.SupermercadosTree.set_model(modelo_tabla3)
+        self.SupermercadosTree.set_reorderable(True)
+
+
+        #34
         self.Acceder = builder.get_object("Acceder")
         self.Acceder.show_all()
 
@@ -81,6 +169,62 @@ class recudi():
         self.AccederUsuario = builder.get_object("AccederUsuario")
         self.AccederCo = builder.get_object("AccederCo")
         self.Accederontraseña = builder.get_object("AccederContraseña")
+
+    def celda_edit(self, celda, fila, texto, columna, modelo):
+            modelo[fila][columna] = texto
+
+    def celda_change(self, combo, fila, texto, modelo, columna):
+
+        modelo[fila][columna] = texto
+
+    def on_celda_edite(self, celda, fila, texto, columna, modelo):
+        modelo[fila][columna] = texto
+
+    #Producto
+    def treevcli_selec_chan(self, selection):
+
+        modelo, fila = selection.get_selected()
+        if fila is not None:
+            self.ProdId.set_text(str(modelo[fila][0]))
+            self.ProdNo.set_text(modelo[fila][1])
+            self.ProdCo.set_text(str(modelo[fila][2]))
+            self.ProdDe.set_text(modelo[fila][3])
+            self.ProdPr.set_text(str(modelo[fila][4]))
+            self.ProdCa.set_text(str(modelo[fila][5]))
+            self.ProdPro.set_text(modelo[fila][6])
+
+    #Proveedor
+    def treevprov_selec_chan(self, selection):
+
+        modelo, fila = selection.get_selected()
+        if fila is not None:
+            self.ProvId.set_text(str(modelo[fila][0]))
+            self.ProvNo.set_text(modelo[fila][1])
+            self.ProvTe.set_text(str(modelo[fila][2]))
+            self.ProvCo.set_text(modelo[fila][3])
+            self.ProvPa.set_text(modelo[fila][4])
+            self.ProvDi.set_text(modelo[fila][5])
+            self.ProvNu.set_text(str(modelo[fila][6]))
+            self.ProvCod.set_text(str(modelo[fila][7]))
+            self.ProvCi.set_text(str(modelo[fila][8]))
+            self.ProvDa.set_text(str(modelo[fila][9]))
+
+    #Supermercados
+    def treevsuper_selec_chan(self, selection):
+
+        modelo, fila = selection.get_selected()
+        if fila is not None:
+            self.ProvId.set_text(str(modelo[fila][0]))
+            self.ProvNo.set_text(modelo[fila][1])
+            self.ProvTe.set_text(str(modelo[fila][2]))
+            self.ProvCo.set_text(modelo[fila][3])
+            self.ProvPa.set_text(modelo[fila][4])
+            self.ProvDi.set_text(modelo[fila][5])
+            self.ProvNu.set_text(str(modelo[fila][6]))
+            self.ProvCod.set_text(str(modelo[fila][7]))
+            self.ProvCi.set_text(str(modelo[fila][8]))
+            self.ProvDa.set_text(str(modelo[fila][9]))
+
 
     def on_EntrarBoton_clicked(self, boton):
         us = self.AccederUs.get_text()
@@ -310,9 +454,6 @@ class recudi():
 
     def on_SuperEliminar_clicked(self, boton):
      print("")
-
-
-
 
 
 if __name__ == "__main__":
