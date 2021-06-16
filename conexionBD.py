@@ -137,13 +137,7 @@ class ConexionBD:
 
                     lista = y
 
-                    self.cursor.execute("INSERT INTO Producto VALUES( '" + str(lista[0]) +
-                                        "' , '" + lista[1] +
-                                        "' , " + str(lista[2]) +
-                                        " , '" + lista[3] +
-                                        " , " + str(lista[4]) +
-                                        " , " + str(lista[5]) +
-                                        " , '" + lista[6] +"'")
+                    self.cursor.execute("INSERT INTO Producto VALUES( " + str(lista[0]) +" , '" + lista[1] +"' , " + str(lista[2]) +" , '" + (lista[3]) +"' , " + str(lista[4]) +" , " + str(lista[5]) +" , '" + lista[6] + "')")
 
         except dbapi.DatabaseError as e:
             print("Erro facendo insert producto: " + str(e))
@@ -198,7 +192,7 @@ class ConexionBD:
 
                     lista = y
 
-                    self.cursor.execute("INSERT INTO Proveedor VALUES( '" + lista[0] +
+                    self.cursor.execute("INSERT INTO Proveedor VALUES( '" + str(lista[0]) +
                                         "' , '" + lista[1] +
                                         "' , " + str(lista[2]) +
                                         " , '" + lista[3] +
@@ -265,7 +259,7 @@ class ConexionBD:
 
                     lista = y
 
-                    self.cursor.execute("INSERT INTO Supermercados VALUES( '" + lista[0] +
+                    self.cursor.execute("INSERT INTO Supermercados VALUES( '" + str(lista[0]) +
                                         "' , '" + lista[1] +
                                         "' , " + str(lista[2]) +
                                         " , '" + lista[3] +

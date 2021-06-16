@@ -89,7 +89,7 @@ finally:
 tablaprod= Table(listaprod)
 
 tablaprod.setStyle([('TEXTCOLOR',(0,0),(-1,0),colors.chocolate)])
-tablaprod.setStyle([('BACKGROUND',(0,1),(-1,-1),colors.fuchsia)])
+tablaprod.setStyle([('BACKGROUND',(0,1),(-1,-1),colors.limegreen)])
 tablaprod.setStyle([('INNERGIRD',(0,1),(-1,-1),0.25,colors.blueviolet)])
 story.append(tablaprod)
 
@@ -106,7 +106,7 @@ story.append(Spacer(0,20))
 tablapro = Table(listapro)
 
 tablapro.setStyle([('TEXTCOLOR',(0,0),(-1,0),colors.chocolate)])
-tablapro.setStyle([('BACKGROUND',(0,1),(-1,-1),colors.fuchsia)])
+tablapro.setStyle([('BACKGROUND',(0,1),(-1,-1),colors.limegreen)])
 tablapro.setStyle([('INNERGIRD',(0,1),(-1,-1),0.25,colors.blueviolet)])
 story.append(tablapro)
 
@@ -123,7 +123,7 @@ story.append(Spacer(0,20))
 tablasuper = Table(listasuper)
 
 tablasuper.setStyle([('TEXTCOLOR',(0,0),(-1,0),colors.chocolate)])
-tablasuper.setStyle([('BACKGROUND',(0,1),(-1,-1),colors.fuchsia)])
+tablasuper.setStyle([('BACKGROUND',(0,1),(-1,-1),colors.limegreen)])
 tablasuper.setStyle([('INNERGIRD',(0,1),(-1,-1),0.25,colors.blueviolet)])
 story.append(tablasuper)
 

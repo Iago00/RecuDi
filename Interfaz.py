@@ -100,8 +100,8 @@ class recudi():
 
         # Producto
         treeProd = Gtk.TreeView(modelo_tabla)
-        seleccion = treeProd.get_selection()
-        seleccion.connect("changed", self.treevcli_selec_chan)
+        self.seleccion = treeProd.get_selection()
+        self.seleccion.connect("changed", self.treevcli_selec_chan)
 
 
 
@@ -111,7 +111,7 @@ class recudi():
             celda.props.editable = True
 
 
-            celda.connect("edited", self.celda_edit, x, modelo_tabla)
+            celda.connect("edited", self.celda_change, x, modelo_tabla)
 
 
             self.ProductoTree.append_column(columnacli)
@@ -121,8 +121,8 @@ class recudi():
 
         #Proveedor
         treeProv = Gtk.TreeView(modelo_tabla2)
-        seleccion = treeProv.get_selection()
-        seleccion.connect("changed", self.treevprov_selec_chan)
+        self.seleccion2 = treeProv.get_selection()
+        self.seleccion2.connect("changed", self.treevprov_selec_chan)
 
 
         for x, columnas in enumerate(["Identificador", "NombreProveedor", "Telefono", "CorreoElectronico", "Pais", "Direccion", "Numero", "CodigoPostal", "CIF", "DatosBancarios"]):
@@ -141,15 +141,15 @@ class recudi():
 
         #Supermercados
         treeSuper = Gtk.TreeView(modelo_tabla3)
-        seleccion = treeSuper.get_selection()
-        seleccion.connect("changed", self.treevsuper_selec_chan)
+        self.seleccion3 = treeSuper.get_selection()
+        self.seleccion3.connect("changed", self.treevsuper_selec_chan)
 
         for x, columnas in enumerate(["Identificador", "NombreSupermercado", "Telefono", "CorreoElectronico", "Pais", "Direccion", "Numero", "CodigoPostal", "CIF"]):
             celda = Gtk.CellRendererText()
             columnacli = Gtk.TreeViewColumn(columnas, celda, text=x)
             celda.props.editable = True
 
-            celda.connect("edited", self.celda_edit, x, modelo_tabla3)
+            celda.connect("edited", self.on_celda_edite, x, modelo_tabla3)
 
             self.SupermercadosTree.append_column(columnacli)
 
@@ -173,7 +173,7 @@ class recudi():
     def celda_edit(self, celda, fila, texto, columna, modelo):
             modelo[fila][columna] = texto
 
-    def celda_change(self, combo, fila, texto, modelo, columna):
+    def celda_change(self, celda, fila, texto, modelo, columna):
 
         modelo[fila][columna] = texto
 
@@ -247,9 +247,10 @@ class recudi():
         self.ProdDe.set_text("consulta realizada")
 
     def on_ProdAñadir_clicked(self, boton):
+        modelo, fila = self.seleccion.get_selected()
         bD = ConexionBD("recu.dat")
-        iden = self.ProdId.get_text()
-        listaProducto = bD.consultaConParametros("SELECT * FROM Producto WHERE Identificador=?", iden)
+        identificador = self.ProdId.get_text()
+        listaProducto = bD.consultaConParametros("SELECT * FROM Producto WHERE Identificador=?", identificador)
 
         def is_emply(compo):
             if len(compo) == 0:
@@ -259,14 +260,17 @@ class recudi():
         listaP = list()
 
         if is_emply(listaProducto) == True:
-            listaP.append(self.ProdId.get_text())
+            listaP.append(int(self.ProdId.get_text()))
             listaP.append(self.ProdNo.get_text())
-            listaP.append(self.ProdCo.get_text())
+            listaP.append(int(self.ProdCo.get_text()))
             listaP.append(self.ProdPr.get_text())
-            listaP.append(self.ProdCa.get_text())
-            listaP.append(self.ProdPro.get_text())
-
+            listaP.append(int(self.ProdCa.get_text()))
+            listaP.append(int(self.ProdPro.get_text()))
+            listaP.append(self.ProdDe.get_text())
             bD.añadirProducto(listaP)
+
+            modelo.append(listaP)
+
         else:
 
             print("Producto repetido")
@@ -318,6 +322,7 @@ class recudi():
             self.ProvDa.set_text(str(consulta[9]))
 
     def on_ProvAñadir_clicked(self, boton):
+        self.modelo_tabla2, fila = self.seleccion2.get_selected()
         bD = ConexionBD("recu.dat")
         identificador = self.ProvId.get_text()
         listaProveedor = bD.consultaConParametros("SELECT * FROM Proveedor WHERE Identificador=?", identificador)
@@ -330,27 +335,24 @@ class recudi():
         listaPr = list()
 
 
-
         if is_emply(listaProveedor) == True:
-            listaPr.append(self.ProvId.get_text())
+            listaPr.append(int(self.ProvId.get_text()))
             listaPr.append(self.ProvNo.get_text())
-            listaPr.append(self.ProvTe.get_text())
+            listaPr.append(int(self.ProvTe.get_text()))
             listaPr.append(self.ProvCo.get_text())
             listaPr.append(self.ProvPa.get_text())
             listaPr.append(self.ProvDi.get_text())
-            listaPr.append(self.ProvNu.get_text())
-            listaPr.append(self.ProvCod.get_text())
-            listaPr.append(self.ProvCi.get_text())
-            listaPr.append(self.ProvDa.get_text())
+            listaPr.append(int(self.ProvNu.get_text()))
+            listaPr.append(int(self.ProvCod.get_text()))
+            listaPr.append(int(self.ProvCi.get_text()))
+            listaPr.append(int(self.ProvDa.get_text()))
 
             bD.añadirProveedor(listaPr)
+            self.modelo_tabla2.append(listaPr)
 
         else:
 
             print("Producto repetido")
-
-
-
 
     def on_ProvModificar_clicked(self, boton):
         bD = ConexionBD("recu.dat")
@@ -398,6 +400,7 @@ class recudi():
                 self.SuperNu.set_text(str(consulta[8]))
 
     def on_SuperAñadir_clicked(self, boton):
+        self.modelo_tabla3, fila = self.seleccion3.get_selected()
         bD = ConexionBD("recu.dat")
         identificador = self.SuperId.get_text()
         listaSupermercados = bD.consultaConParametros("SELECT * FROM Supermercados WHERE Identificador=?", identificador)
@@ -410,19 +413,18 @@ class recudi():
         listaS = list()
 
         if is_emply(listaSupermercados) == True:
-            listaS.append(self.SuperId.get_text())
+            listaS.append(int(self.SuperId.get_text()))
             listaS.append(self.SuperNo.get_text())
-            listaS.append(self.SuperTe.get_text())
+            listaS.append(int(self.SuperTe.get_text()))
             listaS.append(self.SuperPa.get_text())
             listaS.append(self.SuperCo.get_text())
             listaS.append(self.SuperDi.get_text())
-            listaS.append(self.SuperCod.get_text())
-            listaS.append(self.SuperCi.get_text())
-            listaS.append(self.SuperNu.get_text())
-
-
+            listaS.append(int(self.SuperCod.get_text()))
+            listaS.append(int(self.SuperCi.get_text()))
+            listaS.append(int(self.SuperNu.get_text()))
             bD.añadirSupermercados(listaS)
 
+            self.modelo_tabla3.append(listaS)
         else:
 
             print("Producto repetido")
